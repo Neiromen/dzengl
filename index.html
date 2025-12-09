@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детский телефон доверия - Проект</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f9ff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #4a6fa5, #2c4d7e);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            border-bottom: 5px solid #ffb347;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ffb347;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid #4a6fa5;
+        }
+        
+        .section h2 {
+            color: #2c4d7e;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f4ff;
+        }
+        
+        .section h3 {
+            color: #4a6fa5;
+            margin: 20px 0 10px;
+        }
+        
+        .section p {
+            margin-bottom: 15px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .info-card {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-radius: 8px;
+            border-top: 4px solid #4a6fa5;
+        }
+        
+        .info-card i {
+            color: #4a6fa5;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .vocabulary-section {
+            background-color: #fff9f0;
+            border-left-color: #ffb347;
+        }
+        
+        .vocabulary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .vocabulary-table th, .vocabulary-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .vocabulary-table th {
+            background-color: #ffb347;
+            color: white;
+        }
+        
+        .vocabulary-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .qa-section {
+            background-color: #f0fff4;
+            border-left-color: #34a853;
+        }
+        
+        .qa-item {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .qa-item:last-child {
+            border-bottom: none;
+        }
+        
+        .question {
+            font-weight: bold;
+            color: #2c4d7e;
+            margin-bottom: 8px;
+        }
+        
+        .answer {
+            color: #555;
+        }
+        
+        .project-details {
+            background-color: #f9f0ff;
+            border-left-color: #9c4dcc;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 200px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .authors {
+            background-color: #fff0f5;
+            border-left-color: #e91e63;
+            text-align: center;
+        }
+        
+        .authors-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .author {
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            width: 200px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        footer {
+            background-color: #2c4d7e;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+        
+        .deployment-guide {
+            background-color: #2c3e50;
+            color: white;
+            border-left-color: #1abc9c;
+        }
+        
+        .deployment-guide h2, .deployment-guide h3 {
+            color: #1abc9c;
+        }
+        
+        .deployment-guide code {
+            background-color: #34495e;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            display: inline-block;
+            margin: 5px 0;
+        }
+        
+        .steps {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+        
+        .steps li {
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-phone-alt"></i>
+            </div>
+            <h1>Детский телефон доверия</h1>
+            <p>Проект по созданию службы психологической помощи для детей и подростков</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="section">
+            <h2>О проекте</h2>
+            <p>Детский телефон доверия — это бесплатная анонимная служба психологической помощи детям и подросткам, оказавшимся в трудной жизненной ситуации. Наша цель — создать безопасное пространство, где каждый ребенок может получить поддержку, понимание и помощь квалифицированных специалистов.</p>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Конфиденциально</h3>
+                    <p>Все обращения строго анонимны. Мы гарантируем полную конфиденциальность каждого разговора.</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Профессионально</h3>
+                    <p>На линии работают психологи с профессиональным образованием и специальной подготовкой.</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Доступно</h3>
+                    <p>Работаем круглосуточно, 7 дней в неделю. Звонок с любого телефона бесплатный.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section vocabulary-section">
+            <h2>Ключевые термины</h2>
+            <table class="vocabulary-table">
+                <thead>
+                    <tr>
+                        <th>Термин</th>
+                        <th>Транскрипция</th>
+                        <th>Синонимы</th>
+                        <th>Перевод</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Confidential</td>
+                        <td>[kɔnfɪˈdenʃəl]</td>
+                        <td>Private [ˈpraɪvɪt]</td>
+                        <td>Анонимный</td>
+                    </tr>
+                    <tr>
+                        <td>Bullying</td>
+                        <td>[ˈbʊlɪŋ]</td>
+                        <td>Terrorising [ˈterəraɪzɪŋ]</td>
+                        <td>Издевательства</td>
+                    </tr>
+                    <tr>
+                        <td>Shelter</td>
+                        <td>[ˈʃeltə]</td>
+                        <td>Protection/place somewhere to live [prəˈtekʃn]</td>
+                        <td>Приют/убежище</td>
+                    </tr>
+                    <tr>
+                        <td>Fundraise</td>
+                        <td>[ˈfʌndreɪz]</td>
+                        <td>Collect money [kəˈlekt ˈmʌnɪ]</td>
+                        <td>Сбор средств</td>
+                    </tr>
+                    <tr>
+                        <td>Volunteer</td>
+                        <td>[vɔlənˈtɪə]</td>
+                        <td>Offer unpaid help [ˈɔfə ˈʌnˈpeɪd help]</td>
+                        <td>Предлагать добровольную помощь</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="section qa-section">
+            <h2>Ответы на вопросы</h2>
+            
+            <div class="qa-item">
+                <div class="question">1. Что такое ChildLine?</div>
+                <div class="answer">ChildLine — это британская бесплатная круглосуточная служба психологической помощи детям и подросткам, которая предоставляет конфиденциальные консультации по телефону и онлайн.</div>
+            </div>
+            
+            <div class="qa-item">
+                <div class="question">2. Где она находится?</div>
+                <div class="answer">Штаб-квартира ChildLine находится в Лондоне, но служба работает по всей Великобритании.</div>
+            </div>
+            
+            <div class="qa-item">
+                <div class="question">3. Когда она была создана?</div>
+                <div class="answer">ChildLine была основана в 1986 году журналисткой Эстер Ранцен.</div>
+            </div>
+            
+            <div class="qa-item">
+                <div class="question">4. Кому она помогает?</div>
+                <div class="answer">Служба помогает детям и подросткам до 19 лет, оказавшимся в сложных жизненных ситуациях.</div>
+            </div>
+            
+            <div class="qa-item">
+                <div class="question">5. Какие проблемы помогают решать консультанты?</div>
+                <div class="answer">Консультанты помогают с проблемами издевательств в школе, семейных конфликтов, психологического насилия, депрессии, экзаменационного стресса и многих других.</div>
+            </div>
+        </section>
+        
+        <section class="section project-details">
+            <h2>Наш проект: "Детский телефон доверия"</h2>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Когда создан</h3>
+                    <p>Проект был основан в 2023 году в ответ на растущую потребность в психологической помощи детям и подросткам.</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-user-friends"></i>
+                    <h3>Кому помогаем</h3>
+                    <p>Мы оказываем помощь детям и подросткам от 6 до 18 лет, а также консультируем родителей и педагогов.</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-hands"></i>
+                    <h3>Как помогаем</h3>
+                    <p>Предоставляем круглосуточные телефонные консультации, онлайн-чат, информационные материалы и групповые вебинары.</p>
+                </div>
+            </div>
+            
+            <h3>Волонтерская помощь</h3>
+            <p>Наш проект активно привлекает волонтеров для различных задач:</p>
+            <ul>
+                <li>Подготовка и распространение информационных материалов</li>
+                <li>Организация благотворительных мероприятий</li>
+                <li>Административная поддержка</li>
+                <li>Помощь в проведении онлайн-мероприятий</li>
+            </ul>
+            
+            <h3>Контакты</h3>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <h4>Телефон доверия</h4>
+                    <p>8-800-2000-122</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <h4>Веб-сайт</h4>
+                    <p>www.childhelpline.ru</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h4>Электронная почта</h4>
+                    <p>help@childhelpline.ru</p>
+                </div>
+            </div>
+            
+            <h3>Информирование</h3>
+            <p>Мы информируем о нашей службе через:</p>
+            <ul>
+                <li>Социальные сети (ВКонтакте, Telegram, Одноклассники)</li>
+                <li>Сотрудничество со школами и образовательными учреждениями</li>
+                <li>Участие в профильных мероприятиях и конференциях</li>
+                <li>Распространение информационных материалов в детских поликлиниках и центрах</li>
+            </ul>
+            
+            <h3>Партнеры</h3>
+            <p>Нашими партнерами являются:</p>
+            <ul>
+                <li>Министерство образования РФ</li>
+                <li>Российская ассоциация детских психологов</li>
+                <li>Фонд поддержки детей, находящихся в трудной жизненной ситуации</li>
+                <li>Ведущие детские медицинские центры</li>
+            </ul>
+        </section>
+        
+        <section class="section deployment-guide">
+            <h2>Как развернуть этот сайт на GitHub</h2>
+            
+            <h3>Пошаговая инструкция:</h3>
+            <ol class="steps">
+                <li><strong>Создайте аккаунт на GitHub</strong> (если у вас его еще нет) на сайте <a href="https://github.com" style="color: #1abc9c;">github.com</a></li>
+                <li><strong>Создайте новый репозиторий:</strong> нажмите кнопку "+" в правом верхнем углу и выберите "New repository"</li>
+                <li><strong>Назовите репозиторий:</strong> например, "child-helpline-project"</li>
+                <li><strong>Выберите публичный доступ</strong> (Public), чтобы сайт был доступен всем</li>
+                <li><strong>Добавьте файлы:</strong>
+                    <ul>
+                        <li>Создайте файл с именем <code>index.html</code></li>
+                        <li>Скопируйте весь HTML-код этого сайта в этот файл</li>
+                        <li>Сохраните файл</li>
+                    </ul>
+                </li>
+                <li><strong>Включите GitHub Pages:</strong>
+                    <ul>
+                        <li>Перейдите в настройки репозитория (Settings)</li>
+                        <li>В левом меню выберите "Pages"</li>
+                        <li>В разделе "Source" выберите ветку "main" и папку "/ (root)"</li>
+                        <li>Нажмите "Save"</li>
+                    </ul>
+                </li>
+                <li><strong>Дождитесь публикации:</strong> через несколько минут ваш сайт будет доступен по адресу: <code>https://[ваш_логин_github].github.io/[название_репозитория]</code></li>
+            </ol>
+            
+            <h3>Альтернативный способ (через загрузку файлов):</h3>
+            <ol class="steps">
+                <li>Сохраните этот HTML-код в файл с именем <code>index.html</code> на вашем компьютере</li>
+                <li>Зайдите в ваш репозиторий на GitHub</li>
+                <li>Нажмите кнопку "Add file" → "Upload files"</li>
+                <li>Перетащите файл <code>index.html</code> в окно браузера или выберите его через проводник</li>
+                <li>Нажмите "Commit changes"</li>
+                <li>Активируйте GitHub Pages в настройках репозитория как описано выше</li>
+            </ol>
+            
+            <p><strong>Важно:</strong> имя файла должно быть именно <code>index.html</code>, так как это стандартное имя для главной страницы сайта.</p>
+        </section>
+        
+        <section class="section authors">
+            <h2>Авторы проекта</h2>
+            <div class="authors-list">
+                <div class="author">
+                    <h4>Иванова Анна</h4>
+                    <p>Координатор проекта</p>
+                </div>
+                <div class="author">
+                    <h4>Петров Михаил</h4>
+                    <p>Веб-разработчик</p>
+                </div>
+                <div class="author">
+                    <h4>Сидорова Екатерина</h4>
+                    <p>Контент-менеджер</p>
+                </div>
+                <div class="author">
+                    <h4>Кузнецов Дмитрий</h4>
+                    <p>Дизайнер</p>
+                </div>
+            </div>
+            <p style="margin-top: 20px;">Проект выполнен в рамках учебной программы по английскому языку, 2023 г.</p>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Детский телефон доверия | Проект социальной помощи детям и подросткам</p>
+            <p>8-800-2000-122 | Круглосуточно | Бесплатно | Анонимно</p>
+            <p style="margin-top: 15px; opacity: 0.8;">© 2023 Все права защищены</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Простой скрипт для плавной прокрутки
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Подсветка текущего раздела при прокрутке
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section');
+            const scrollPosition = window.scrollY + 100;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if(scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    section.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+                } else {
+                    section.style.boxShadow = '0 5px 15px rgba(0,0,0,0.05)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
